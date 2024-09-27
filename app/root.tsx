@@ -1,10 +1,11 @@
 import { json, Outlet, useLoaderData } from '@remix-run/react';
 // import { ThemeProvider } from '@emotion/react';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, useMediaQuery, useTheme } from '@mui/material';
 import { Document } from './src/Document';
 import { ErrorBoundary } from './src/ErrorBoundary';
 import { LoaderFunctionArgs } from '@remix-run/node';
-import { ThemeProvider } from './src/Theme';
+import { ThemeProvider, useColorMode } from './src/Theme';
+
 
 export interface RootOutletContext {
   user: { avatar: string, mobile: string, name: string, openId: boolean, password: boolean, signature: string, username: string, roles: string[] };
@@ -16,6 +17,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 }
 export default function App() {
   const { user } = useLoaderData<typeof loader>();
+
   return (
     <ThemeProvider >
       <Document>

@@ -1,10 +1,16 @@
 import { Check, ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Box, Container, List, Stack, ListItemText, ListItemButton, Collapse } from "@mui/material";
-import { Link, Outlet, useLocation, } from "@remix-run/react";
+import { Link, MetaFunction, Outlet, useLocation, } from "@remix-run/react";
 import { Fragment } from "react/jsx-runtime";
 import { demoMenu } from "~/data/demoMenu";
 import AppTopbar from "~/src/Topbar";
-
+export const meta: MetaFunction = () => {
+  return [{
+    title: 'Material UI-Remix-Vite example Demo',
+    description: 'This example project combines Material UI, Remix, Demonstrate how to display markdown files.',
+    keywords: 'Material UI, Remix, Vite, example, web design, routing, development, user experience',
+  }]
+}
 
 export default function Demo() {
   const { pathname } = useLocation();

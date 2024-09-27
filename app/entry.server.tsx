@@ -5,7 +5,7 @@ import createEmotionCache from './src/createEmotionCache';
 import { CssBaseline } from '@mui/material';
 import { CacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
-import { ThemeProvider } from './src/Theme';
+// import { ThemeProvider } from './src/Theme';
 
 export default function handleRequest(
   request: Request,
@@ -19,10 +19,10 @@ export default function handleRequest(
   function MuiRemixServer() {
     return (
       <CacheProvider value={cache}>
-        <ThemeProvider>
-          <CssBaseline />
-          <RemixServer context={remixContext} url={request.url} />
-        </ThemeProvider>
+        {/* <ThemeProvider> */}
+        <CssBaseline />
+        <RemixServer context={remixContext} url={request.url} />
+        {/* </ThemeProvider> */}
       </CacheProvider>
     );
   }

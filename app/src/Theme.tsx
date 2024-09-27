@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import React from 'react';
@@ -13,24 +13,16 @@ type ColorModeContextType = {
 const ThemeContext = createContext<ColorModeContextType | undefined>(undefined);
 
 
-export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const ThemeProvider = ({ children, reMode }: { children: React.ReactNode, reMode?: boolean }) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [mode, setMode] = useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light');
-
   const toggleColorMode = () => {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode],
-  );
-
+  const theme = React.useMemo(() => {
+    return createTheme({ palette: { mode } })
+  }, [mode]);
   return (
     <ThemeContext.Provider value={{ mode, toggleColorMode }}>
       <MuiThemeProvider theme={theme}>

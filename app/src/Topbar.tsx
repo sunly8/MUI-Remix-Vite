@@ -1,5 +1,5 @@
-import { AppBar, Toolbar, Typography, IconButton, Button, Box, Drawer, List, ListItem, ListItemText, Stack } from '@mui/material';
-import { Link, useNavigate, useOutletContext, useRouteLoaderData } from '@remix-run/react';
+import { AppBar, Toolbar, Typography, IconButton, Button, Box, Drawer, List, ListItemText, Stack, ListItemButton } from '@mui/material';
+import { Link, useNavigate, useRouteLoaderData } from '@remix-run/react';
 import { RootOutletContext } from '~/root';
 import { Brightness4, Brightness7, Menu as MenuIcon } from '@mui/icons-material';
 import { Fragment, useState } from 'react';
@@ -48,9 +48,9 @@ export default function AppTopbar() {
       >
         <List sx={{ minWidth: 180 }}>
           {appNavs.map((nav) => (
-            <ListItem key={nav.name} component={Link} to={nav.to} onClick={handleDrawerToggle}>
+            <ListItemButton key={nav.name} component={Link} to={nav.to} onClick={handleDrawerToggle}>
               <ListItemText primary={nav.name} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </List>
       </Drawer>

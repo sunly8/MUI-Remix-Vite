@@ -1,8 +1,7 @@
 import { withEmotionCache } from "@emotion/react";
-import { unstable_useEnhancedEffect, useTheme } from "@mui/material";
-
+import { unstable_useEnhancedEffect, useMediaQuery, useTheme } from "@mui/material";
 import { Meta, Links, ScrollRestoration, Scripts } from "@remix-run/react";
-import React from "react";
+import React, { useEffect } from "react";
 import ClientStyleContext from "~/src/ClientStyleContext";
 import { useColorMode } from "./Theme";
 
@@ -13,7 +12,6 @@ interface DocumentProps {
 }
 export const Document = withEmotionCache(({ children, title }: DocumentProps, emotionCache) => {
   const clientStyleData = React.useContext(ClientStyleContext);
-  const { mode } = useColorMode();
 
   // Only executed on client
   unstable_useEnhancedEffect(() => {
@@ -31,6 +29,14 @@ export const Document = withEmotionCache(({ children, title }: DocumentProps, em
   }, []);
 
   const theme = useTheme();
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const { toggleColorMode } = useColorMode()
+  const isSystemDarkMode = prefersDarkMode && (theme.palette.mode !== 'dark')
+  useEffect(() => {
+    if (isSystemDarkMode) {
+      toggleColorMode()
+    }
+  }, [isSystemDarkMode])
   return (
     <html lang="zh">
       <head>
@@ -42,7 +48,7 @@ export const Document = withEmotionCache(({ children, title }: DocumentProps, em
         <Links />
         <meta name="emotion-insertion-point" content="emotion-insertion-point" />
       </head>
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={false} monica-locale="zh_CN" monica-version="1.0" monica-id="123">
         {children}
         <ScrollRestoration />
         <Scripts />
