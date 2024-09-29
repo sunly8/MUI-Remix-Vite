@@ -2,7 +2,7 @@
 
 [在线体验](https://yourdata.plus)
 
-[English](./README.md) [中文](./README.zh.md)
+[English](https://github.com/sunly8/MUI-Remix-Vite/blob/main/README.md) [中文](https://github.com/sunly8/MUI-Remix-Vite/blob/main/README_zh.md) 
 
 ## 概述
 
