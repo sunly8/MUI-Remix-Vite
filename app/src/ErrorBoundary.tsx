@@ -4,7 +4,7 @@ import ProTip from "~/src/ProTip";
 import Copyright from "~/src/Copyright";
 import { Box, Container } from "@mui/material";
 import { useEffect, useState } from "react";
-import { ThemeProvider } from "./Theme";
+import { AppThemeProvider } from "./Theme";
 
 export function ErrorBoundary() {
   const error = useRouteError();
@@ -26,8 +26,8 @@ export function ErrorBoundary() {
   }, [error]);
 
   return (
-    <Document title={info.title}>
-      <ThemeProvider>
+    <AppThemeProvider>
+      <Document title={info.title}>
         <Container maxWidth="sm">
           <Box sx={{ my: 4 }}>
             <h1>{info.title}</h1>
@@ -36,8 +36,8 @@ export function ErrorBoundary() {
             <Copyright />
           </Box>
         </Container>
-      </ThemeProvider>
-    </Document>
+      </Document>
+    </AppThemeProvider>
   );
 }
 

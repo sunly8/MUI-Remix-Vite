@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, keyframes } from '@mui/material/styles';
+import { styled, keyframes } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Link } from '@remix-run/react';
 import { Box } from '@mui/material';

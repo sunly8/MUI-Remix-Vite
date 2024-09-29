@@ -6,5 +6,6 @@ export const demoMenu = [
       { name: 'Fetch', to: '/demo/formdata/fetch' },
       { name: 'Api', to: '/demo/formdata/api' },
     ]
-  }
+  },
+  { name: 'Use context', to: '/demo/usecontext', children: [] }
 ];

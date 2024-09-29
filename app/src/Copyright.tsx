@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { Link } from '@remix-run/react';
 
 export default function Copyright() {
@@ -8,11 +8,12 @@ export default function Copyright() {
       align="center"
       sx={{
         color: 'text.secondary',
+        my: 10
       }}
     >
       {'Copyright © '}
-      <Link color="inherit" to="https://yourdata.plus/">
-        YourData<sup>+</sup>
+      <Link to="https://yourdata.plus/">
+        <Typography variant='caption' color='text.secondary'>YourData<sup>+</sup></Typography>
       </Link>{' '}
       {new Date().getFullYear()}.
     </Typography>

@@ -1,17 +1,17 @@
 import { AppBar, Toolbar, Typography, IconButton, Button, Box, Drawer, List, ListItemText, Stack, ListItemButton } from '@mui/material';
 import { Link, useLocation, useNavigate, useRouteLoaderData } from '@remix-run/react';
-import { RootOutletContext } from '~/root';
+import { RootOutletContext } from '../root';
 import { Brightness4, Brightness7, Menu as MenuIcon } from '@mui/icons-material';
 import { Fragment, useState } from 'react';
 import Logo from './Logo';
-import { useColorMode } from './Theme';
-import { appNavs } from '~/data/appNavs';
+import { useAppColorMode } from './Theme';
+import { appNavs } from '../data/appNavs';
 
 export default function AppTopbar() {
   const { user } = useRouteLoaderData('root') as RootOutletContext;
   console.log(user);
   const { pathname } = useLocation()
-  const { toggleColorMode, mode } = useColorMode();
+  const { toggleColorMode, mode } = useAppColorMode();
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -33,8 +33,8 @@ export default function AppTopbar() {
             {appNavs.map((nav) => (
               <Button size='large' key={nav.name} component={Link} to={nav.to}
                 color={nav.to === '/' ?
-                  (pathname === '/' ? 'primary' : 'inherit') :
-                  pathname.startsWith(nav.to) ? 'primary' : 'inherit'
+                  (pathname === '/' ? 'secondary' : 'inherit') :
+                  pathname.startsWith(nav.to) ? 'secondary' : 'inherit'
                 }
               >{nav.name}</Button>
             ))}

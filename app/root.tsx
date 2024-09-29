@@ -1,10 +1,11 @@
 import { json, Outlet, useLoaderData } from '@remix-run/react';
-// import { ThemeProvider } from '@emotion/react';
-import { CssBaseline, useMediaQuery, useTheme } from '@mui/material';
+import { Alert, CssBaseline, Snackbar } from '@mui/material';
 import { Document } from './src/Document';
 import { ErrorBoundary } from './src/ErrorBoundary';
 import { LoaderFunctionArgs } from '@remix-run/node';
-import { ThemeProvider, useColorMode } from './src/Theme';
+import { AppThemeProvider } from './src/Theme';
+import { useState } from 'react';
+
 
 
 export interface RootOutletContext {
@@ -13,18 +14,32 @@ export interface RootOutletContext {
 };
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json({ user: null });
+  return json({ user: { avatar: '/avatar/1.svg', name: 'DemoUser', signature: '' } });
 }
 export default function App() {
   const { user } = useLoaderData<typeof loader>();
+  const [snk, setSnk] = useState<{ success: boolean, message?: string }>();
+
+  const handleSnk = (data: { success: boolean, message?: string }) => {
+    if (snk) {
+      setTimeout(() => setSnk(data));
+    } else {
+      setSnk(data);
+    }
+  }
 
   return (
-    <ThemeProvider >
+    <AppThemeProvider>
       <Document>
         <CssBaseline />
-        <Outlet context={{ user }} />
+        <Outlet context={{ user, setSnk: handleSnk } as RootOutletContext} />
+        {snk && <Snackbar open onClose={() => setSnk(undefined)} autoHideDuration={3000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+          <Alert onClose={() => setSnk(undefined)} severity={snk?.success ? 'success' : 'error'} sx={{ width: '100%' }}>
+            {snk?.message}
+          </Alert>
+        </Snackbar>}
       </Document>
-    </ThemeProvider>
+    </AppThemeProvider>
   );
 }
 export { ErrorBoundary };

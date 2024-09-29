@@ -1,20 +1,24 @@
 import { withEmotionCache } from "@emotion/react";
 import { unstable_useEnhancedEffect, useMediaQuery, useTheme } from "@mui/material";
 import { Meta, Links, ScrollRestoration, Scripts } from "@remix-run/react";
-import React, { useEffect } from "react";
 import ClientStyleContext from "~/src/ClientStyleContext";
-import { useColorMode } from "./Theme";
-
-// import theme from "~/src/theme";
+import { useAppColorMode } from "./Theme";
+import { useContext } from "react";
 interface DocumentProps {
   children: React.ReactNode;
   title?: string;
 }
 export const Document = withEmotionCache(({ children, title }: DocumentProps, emotionCache) => {
-  const clientStyleData = React.useContext(ClientStyleContext);
+  const clientStyleData = useContext(ClientStyleContext);
+
+  const theme = useTheme();
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const { toggleColorMode, manual } = useAppColorMode()
+  const isSystemDarkMode = prefersDarkMode && (theme.palette.mode !== 'dark')
 
   // Only executed on client
   unstable_useEnhancedEffect(() => {
+
     // re-link sheet container
     emotionCache.sheet.container = document.head;
     // re-inject tags
@@ -25,24 +29,20 @@ export const Document = withEmotionCache(({ children, title }: DocumentProps, em
     });
     // reset cache to reapply global styles
     clientStyleData.reset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const theme = useTheme();
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const { toggleColorMode } = useColorMode()
-  const isSystemDarkMode = prefersDarkMode && (theme.palette.mode !== 'dark')
-  useEffect(() => {
-    if (isSystemDarkMode) {
+    if (isSystemDarkMode && !manual) {
       toggleColorMode()
     }
-  }, [isSystemDarkMode])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSystemDarkMode]);
+
+
   return (
     <html lang="zh">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="theme-color" content={theme.palette.primary.main} />
+        <link rel="manifest" href="/manifest.json" />
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />

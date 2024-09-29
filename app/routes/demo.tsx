@@ -1,18 +1,22 @@
-import { Check, ExpandLess, ExpandMore } from "@mui/icons-material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Box, Container, List, Stack, ListItemText, ListItemButton, Collapse } from "@mui/material";
-import { Link, MetaFunction, Outlet, useLocation, } from "@remix-run/react";
+import { Link, MetaFunction, Outlet, useLocation, useOutletContext, } from "@remix-run/react";
 import { Fragment } from "react/jsx-runtime";
 import { demoMenu } from "~/data/demoMenu";
+import { RootOutletContext } from "~/root";
+import Copyright from "~/src/Copyright";
 import AppTopbar from "~/src/Topbar";
 export const meta: MetaFunction = () => {
   return [{
-    title: 'Material UI-Remix-Vite example Demo',
+    title: 'MUI-Remix-Vite example Demo',
     description: 'This example project combines Material UI, Remix, Demonstrate how to display markdown files.',
     keywords: 'Material UI, Remix, Vite, example, web design, routing, development, user experience',
   }]
 }
 
 export default function Demo() {
+  const { user, setSnk } = useOutletContext<RootOutletContext>();
+
   const { pathname } = useLocation();
   return (
     <Fragment>
@@ -45,7 +49,8 @@ export default function Demo() {
         </Stack>
         <Box sx={{ flexGrow: 1, overflowY: 'auto', height: '100%' }}>
           <Container maxWidth="lg" sx={{ py: 3 }}>
-            <Outlet />
+            <Outlet context={{ user, setSnk }} />
+            <Copyright />
           </Container>
         </Box>
       </Stack>

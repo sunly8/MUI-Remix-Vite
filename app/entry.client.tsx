@@ -2,10 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { RemixBrowser } from '@remix-run/react';
 import { CacheProvider } from '@emotion/react';
-import CssBaseline from '@mui/material/CssBaseline';
+import { CssBaseline } from '@mui/material';
 import ClientStyleContext from './src/ClientStyleContext';
 import createEmotionCache from './src/createEmotionCache';
-import { ThemeProvider } from './src/Theme';
 
 interface ClientCacheProviderProps {
   children: React.ReactNode;
@@ -33,10 +32,8 @@ const hydrate = () => {
     ReactDOM.hydrateRoot(
       document,
       <ClientCacheProvider>
-        <ThemeProvider>
-          <CssBaseline />
-          <RemixBrowser />
-        </ThemeProvider>
+        <CssBaseline />
+        <RemixBrowser />
       </ClientCacheProvider>,
     );
   });

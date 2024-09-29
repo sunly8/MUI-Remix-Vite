@@ -3,20 +3,17 @@ import { Form, useActionData } from "@remix-run/react";
 import { Container } from "@mui/material";
 import { json } from "@remix-run/node";
 import { ActionFunctionArgs } from "@remix-run/node";
-
+import { saveUser } from "../.server/dbservice";
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const name = formData.get("name");
-  // save to database
-  // db.user.create({
-  //   data: {
-  //     name,
-  //   },
-  // });
+  // save to database /app/.server/dbservice.ts
+  const result = await saveUser(name as string);
   const data = {
-    success: true,
-    message: "Save successfully",
+    success: result.success,
+    message: result.message,
+    data: result.data, // if you want to return data to the client
   };
   return json({ data });
 }

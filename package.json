@@ -1,56 +1,48 @@
 {
   "name": "mui-remix-vite-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev --host",
     "start": "vite",
+    "s": "remix-serve server.js",
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@alicloud/pop-core": "^1.7.13",
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
-    "@mui/icons-material": "^6.1.1",
+    "@mui/icons-material": "next",
     "@mui/material": "latest",
-    "@remix-run/css-bundle": "latest",
     "@remix-run/node": "latest",
     "@remix-run/react": "latest",
     "@remix-run/serve": "latest",
     "@remix-run/server-runtime": "latest",
-    "bcryptjs": "^2.4.3",
-    "highlight.js": "^11.4.0",
-    "ioredis": "^5.4.1",
-    "katex": "^0.16.11",
-    "lodash": "^4.17.21",
-    "mongoose": "^8.6.3",
+    "katex": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-markdown": "^9.0.1",
-    "react-syntax-highlighter": "^15.5.0",
-    "rehype-katex": "^7.0.1",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0",
-    "remark-math": "^6.0.0",
-    "remix-utils": "^7.7.0"
+    "react-markdown": "latest",
+    "react-syntax-highlighter": "latest",
+    "rehype-katex": "latest",
+    "rehype-raw": "latest",
+    "remark-gfm": "latest",
+    "remark-math": "latest"
   },
   "devDependencies": {
     "@remix-run/dev": "latest",
-    "@types/bcrypt": "^5.0.2",
-    "@types/bcryptjs": "^2.4.6",
-    "@types/katex": "^0.16.7",
+    "@types/bcryptjs": "latest",
+    "@types/katex": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/react-syntax-highlighter": "latest",
     "typescript": "latest",
-    "vite": "^5.4.8"
+    "vite": "latest"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "sideEffects": false
 }
