@@ -30,7 +30,15 @@
 
 这是一个常规的 nodejs 项目，您需要掌握npm和nodejs的基础知识。我们精简了项目结构，让你使用最少的工作量，快速上手。只需要掌握最基本的 react 知识就可以快速开发最新的remix项目，并使用vite建构你的应用。
 
-1. 克隆仓库:
+1. 创建项目:
+   
+使用 create-remix ：https://remix.org.cn/docs/en/main/guides/templates#community-stacks
+
+   ```bash
+   npx create-remix@latest --template sunly8/MUI-Remix-Vite
+   ```
+
+   or
 
    ```bash
    git clone https://github.com/sunly8/MUI-Remix-Vite
