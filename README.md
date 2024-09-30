@@ -31,7 +31,15 @@ Ensure you have the following installed:
 
 This is a standard nodejs project, and you need to have a basic understanding of npm and nodejs. We have streamlined the project structure to allow you to get started quickly with minimal effort. You only need to grasp the most basic React knowledge to quickly develop the latest Remix project and use Vite to build your application.
 
-1. Clone the repository:
+1. Create a new project:
+
+use create-remix:
+https://remix.org.cn/docs/en/main/guides/templates#community-stacks
+
+   ```bash
+   npx create-remix@latest --template sunly8/MUI-Remix-Vite
+   ```
+   or
 
    ```bash
    git clone https://github.com/sunly8/MUI-Remix-Vite
