@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<svg version="1.1" id="&#x56FE;&#x5C42;_1" shape-rendering="geometricPrecision" xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 141.732 141.732"
+	style="enable-background:new 0 0 141.732 141.732;" xml:space="preserve">
+	<polyline style="fill:#D0CCE5;" points="1.546,19.435 24.656,65.654 47.765,19.435 " />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="111.1986" y1="873.4295" x2="136.9846" y2="828.7727"
+		gradientTransform="matrix(1 0 0 1 -19.25 -799.95)">
+		<stop offset="0" style="stop-color:#D4CDF4" />
+		<stop offset="1" style="stop-color:#394283" />
+	</linearGradient>
+	<path style="fill:url(#SVGID_1_);" d="M109.377,19.503H63.185L6.559,122.348c0,0,15.542-0.095,30.799,0
+	c27.471-53.243,40.038-81.828,59.33-81.733c15.515,0.082,20.379,6.902,20.379,28.082c0,17.336-8.994,28.666-21.737,28.666H56.813
+	l-9.062,19.482h61.626c16.303,0,30.799-14.455,30.799-30.813V50.234C140.176,33.876,125.735,19.503,109.377,19.503z" />
+	<path style="fill:#D0CCE5;" d="M109.336,19.503H63.144L6.518,122.348c0,0,15.556-0.095,30.813,0
+	c27.457-53.243,36.69-78.328,58.017-83.032c27.429-6.048,44.774,10.918,44.774,10.918C140.149,33.876,125.694,19.503,109.336,19.503
+	z" />
+</svg>

@@ -1,0 +1,28 @@
+{
+  "short_name": "mui-remix-vite-ts",
+  "name": "mui-remix-vite-ts",
+  "description": "一个使用 MUI、Remix、Vite 和 TypeScript 构建的应用",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "scope": "/",
+  "orientation": "any"
+}
